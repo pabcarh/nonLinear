@@ -10,13 +10,14 @@
 #' @param yl a vector with two values
 #' @param xl a vector with two values
 #' @param Fyx a Fyx; default is 1
+#' @param Ival a list
 #' @param dir a path; default is 'D:/'
 #' @return character a string; default is 'Hello, world!'
 #' @author author
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
-non_linear_DT<-function(x,y,Error,yl,xl,Fyx,dir)
+non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
 {
   setwd(dir)
   # modelling

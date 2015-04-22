@@ -20,5 +20,5 @@ Error<-c(0.001838716,0.005752903,0.003142897,0.008049071,0.011666794,0.012147017
 Fyx=as.formula(paste("y ~ log(1/(b*(x-Tb))^2)")) ## ecuacion
 Ival=list(b=-0.0151 ,Tb=-2.8397)
 
-non_linear_DT(x,y,Error,yl,xl,Fyx,dir)
+non_linear_DT(x,y,Error,yl,xl,Fyx,Ival,dir)
 
