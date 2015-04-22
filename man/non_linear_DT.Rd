@@ -4,7 +4,7 @@
 \alias{non_linear_DT}
 \title{non_linear_DT}
 \usage{
-non_linear_DT(x, y, Error, yl, xl, Fyx, Ival, dir)
+non_linear_DT(x, y, Error, yl, xl, Fyx, Ival, dir, show = FALSE)
 }
 \arguments{
 \item{x}{numeric vectors.}
@@ -22,6 +22,8 @@ non_linear_DT(x, y, Error, yl, xl, Fyx, Ival, dir)
 \item{Ival}{a list.}
 
 \item{dir}{a path; default is 'D:/'.}
+
+\item{show}{logical.}
 }
 \value{
 character a string; default is 'finished!'.

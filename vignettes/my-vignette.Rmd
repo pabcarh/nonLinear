@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Non Linear Curves"
+author: "Pablo carhuapoma"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -9,13 +9,9 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Non linear curves is a package for modelling like excel tools, when the shape and summary are developmented for publication.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
-
-## Vignette Info
+## Package Info
 
 Note the various macros within the `vignette` setion of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
 
@@ -31,9 +27,26 @@ The `html_vignette` template includes a basic CSS theme. To override this theme 
 
 The figure sizes have been customised so that you can easily put two images side-by-side. 
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r, fig.show='hold',echo=FALSE, results='asis'}
+library(MASS)
+library(plotrix)
+library(nonLinear)
+dir<-"C:/Users/Pablo/Documents/CIP/Marc Sporleder/Abril 2015"
+
+# dataset of the mortality
+
+x<-c(10.13,14.89,10.1,15.1,20.4,20.4,25.4,25.4,27.8,10,10,10,15.4,13.2,17,17,17,20,20,20,24,24,28)
+y<-c(0.030140063,0.065729989,0.030064807,0.07621477,0.121007833,0.123823267,0.181627026,0.185092422,0.192492132,0.041961615,0.044020493,0.042663992,0.072331179,0.068030442,0.088575499,0.090419077,0.098401424,0.137325673,0.114383322,0.103695143,0.149165329,0.157630751,0.257046057)
+#yl<-c(0,max(y)+0.01) # se puede editar
+y<-log(1/y)
+yl<-c(0,0.3) # se puede editar
+xl<-c(0,max(x)+5) # se puede editar
+
+Error<-c(0.001838716,0.005752903,0.003142897,0.008049071,0.011666794,0.012147017,0.019794179,0.020029991,0.017113088,0.003042291,0.003866312,0.003400574,0.005510225,0.005401576,0.00826834,0.010117433,0.013288156,0.014397771,0.017462622,0.00783597,0.014747385,0.012056713,0.023403715)
+Fyx=as.formula(paste("y ~ log(1/(b*(x-Tb))^2)")) ## ecuacion
+Ival=list(b=-0.0151 ,Tb=-2.8397)
+
+non_linear_DT(x,y,Error,yl,xl,Fyx,Ival,dir,show=TRUE)
 ```
 
 You can enable figure captions by `fig_caption: yes` in YAML:
@@ -44,13 +57,6 @@ You can enable figure captions by `fig_caption: yes` in YAML:
 
 Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
 
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
 
 Also a quote using `>`:
 

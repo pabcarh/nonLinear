@@ -12,12 +12,13 @@
 #' @param Fyx a expression; default is 1.
 #' @param Ival a list.
 #' @param dir a path; default is 'D:/'.
+#' @param show logical.
 #' @return character a string; default is 'finished!'.
 #' @author Pablo Carhuapoma Ramos
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
-non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
+non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir,show=FALSE)
 {
   # modelling
   out <- nls(Fyx, start = Ival,trace = FALSE)
@@ -39,7 +40,10 @@ non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
   corrx2<-seq(0,30,5)
   corry2<-seq(0,0.3,0.05)
   
-  png(paste(dir,"/Plot_NonLinear.png",sep=""), width = 12, height = 10, units = 'in', res = 300) # para el grafico
+  if(show==FALSE)
+  {
+    png(paste(dir,"/Plot_NonLinear.png",sep=""), width = 12, height = 10, units = 'in', res = 300) # para el grafico
+  }
   plot(x, 1/exp(y), ylab="development rate (1/day)", xlab="temperature (°C)", col="transparent", pch=19,axes=F,xlim=c(0,30),ylim=c(0,0.3),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5)
   axis(1, corrx2,lwd=2)
   axis(2, corry2,labels = round(corry2,2),las=2,lwd=2)
@@ -53,13 +57,24 @@ non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
   plotCI(x, F, ui=U, li=L, add=TRUE, col="gray60",scol="black", pch=19, cex=3,lwd=3)
   points(x, 1/exp(y),col="gray10",lwd=3,cex=3)
   box()
+  if(show==FALSE)
+  {
+    dev.off()  
+  }
   
-  dev.off()
+  if(show==FALSE)
+  {
+    sink(paste(dir,"/results.txt",sep=""))    
+  }
   
-  sink(paste(dir,"/results.txt",sep=""))
   print(summary(out))
   Dfinal2=data.frame(x,y,Ajustado=round(predict(out),4));colnames(Dfinal2)[2]<-"Observado"
   print(Dfinal2)
-  sink()
+  
+  if(show==FALSE)
+  {
+    sink()
+  }
+  
   return(print("finished!"))
 }
