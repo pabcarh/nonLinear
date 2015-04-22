@@ -7,24 +7,24 @@
 non_linear_DT(x, y, Error, yl, xl, Fyx, Ival, dir)
 }
 \arguments{
-\item{x}{a vector}
+\item{x}{numeric vectors.}
 
-\item{Error}{a vector}
+\item{y}{numeric vectors.}
 
-\item{yl}{a vector with two values}
+\item{Error}{numeric vectors.}
 
-\item{xl}{a vector with two values}
+\item{yl}{numeric vectors with two values.}
 
-\item{Fyx}{a Fyx; default is 1}
+\item{xl}{numeric vectors with two values.}
 
-\item{Ival}{a list}
+\item{Fyx}{a expression; default is 1.}
 
-\item{dir}{a path; default is 'D:/'}
+\item{Ival}{a list.}
 
-\item{x}{a vector}
+\item{dir}{a path; default is 'D:/'.}
 }
 \value{
-character a string; default is 'Hello, world!'
+character a string; default is 'finished!'.
 }
 \description{
 A one liner.
@@ -59,6 +59,6 @@ non_linear_DT(x,y,Error,yl,xl,Fyx,Ival,dir)
 
 }
 \author{
-author
+Pablo Carhuapoma Ramos
 }
 

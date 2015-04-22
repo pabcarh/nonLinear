@@ -4,22 +4,21 @@
 #' 
 #' Here more details
 #'
-#' @param x a vector
-#' @param x a vector
-#' @param Error a vector
-#' @param yl a vector with two values
-#' @param xl a vector with two values
-#' @param Fyx a Fyx; default is 1
-#' @param Ival a list
-#' @param dir a path; default is 'D:/'
-#' @return character a string; default is 'Hello, world!'
-#' @author author
+#' @param x numeric vectors.
+#' @param y numeric vectors.
+#' @param Error numeric vectors.
+#' @param yl numeric vectors with two values.
+#' @param xl numeric vectors with two values.
+#' @param Fyx a expression; default is 1.
+#' @param Ival a list.
+#' @param dir a path; default is 'D:/'.
+#' @return character a string; default is 'finished!'.
+#' @author Pablo Carhuapoma Ramos
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
 non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
 {
-  setwd(dir)
   # modelling
   out <- nls(Fyx, start = Ival,trace = FALSE)
   SE<-(summary(out))[3]$sigma
@@ -40,7 +39,7 @@ non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
   corrx2<-seq(0,30,5)
   corry2<-seq(0,0.3,0.05)
   
-  png("Plot_NonLinear.png", width = 12, height = 10, units = 'in', res = 300) # para el grafico
+  png(paste(dir,"/Plot_NonLinear.png",sep=""), width = 12, height = 10, units = 'in', res = 300) # para el grafico
   plot(x, 1/exp(y), ylab="development rate (1/day)", xlab="temperature (°C)", col="transparent", pch=19,axes=F,xlim=c(0,30),ylim=c(0,0.3),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5)
   axis(1, corrx2,lwd=2)
   axis(2, corry2,labels = round(corry2,2),las=2,lwd=2)
@@ -57,9 +56,10 @@ non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir)
   
   dev.off()
   
-  sink("results.txt")
+  sink(paste(dir,"/results.txt",sep=""))
   print(summary(out))
   Dfinal2=data.frame(x,y,Ajustado=round(predict(out),4));colnames(Dfinal2)[2]<-"Observado"
   print(Dfinal2)
   sink()
+  return(print("finished!"))
 }
