@@ -1,12 +1,17 @@
 Package: nonLinear
 Title: Non linear regression
 Version: 1.0.0
-Authors@R: person("Pablo", "Carhuapoma", , "p.carhuapoma@cgiar.org", role = c("aut", "cre"))
+Authors@R: person("Pablo", "Carhuapoma", , "p.carhuapoma@cgiar.org", role =
+    c("aut", "cre"))
 Description: Non linear regression (x,y) for ILCYM
-Depends: R (>= 2.15.1)
+Depends:
+    R (>= 2.15.1)
 License: GPL-3
 LazyData: true
 URL: https://github.com/pabcarh/nonLinear
 BugReports: https://github.com/pabcarh/nonLinear/issues
-Suggests: knitr,testthat
+Suggests:
+    knitr,testthat
 VignetteBuilder: knitr
+Collate:
+    'non_linear_DT.R'

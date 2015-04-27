@@ -1,6 +1,6 @@
 #' non_linear_DT
 #'
-#' A one liner.
+#' A special curve.
 #' 
 #' Here more details
 #'
@@ -9,6 +9,8 @@
 #' @param Error numeric vectors.
 #' @param yl numeric vectors with two values.
 #' @param xl numeric vectors with two values.
+#' @param yyl numeric vectors with two values.
+#' @param xyl numeric vectors with two values.
 #' @param Fyx a expression; default is 1.
 #' @param Ival a list.
 #' @param dir a path; default is 'D:/'.
@@ -18,7 +20,7 @@
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
-non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir,show=FALSE)
+non_linear_DT<-function(x,y,Error,yl,xl,yyl,xxl,Fyx,Ival,dir,show=FALSE)
 {
   # modelling
   out <- nls(Fyx, start = Ival,trace = FALSE)
@@ -37,14 +39,14 @@ non_linear_DT<-function(x,y,Error,yl,xl,Fyx,Ival,dir,show=FALSE)
   ffup <- function(x){1/(exp(eval(Fyx[[3]])+SE*qt(0.975,dff)))}
   fflo <- function(x){1/(exp(eval(Fyx[[3]])-SE*qt(0.975,dff)))}
   
-  corrx2<-seq(0,30,5)
-  corry2<-seq(0,0.3,0.05)
+  corrx2<-seq(xl[1],xl[2],xxl)
+  corry2<-seq(yl[1],yl[2],yyl)
   
   if(show==FALSE)
   {
     png(paste(dir,"/Plot_NonLinear.png",sep=""), width = 12, height = 10, units = 'in', res = 300) # para el grafico
   }
-  plot(x, 1/exp(y), ylab="development rate (1/day)", xlab="temperature (°C)", col="transparent", pch=19,axes=F,xlim=c(0,30),ylim=c(0,0.3),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5)
+  plot(x, 1/exp(y), ylab="development rate (1/day)", xlab="temperature (°C)", col="transparent", pch=19,axes=F,xlim=c(xl[1],xl[2]),ylim=c(yl[1],yl[2]),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5)
   axis(1, corrx2,lwd=2)
   axis(2, corry2,labels = round(corry2,2),las=2,lwd=2)
   for(i in 1:length(corry2)){lines(c(-1,max(corrx2)+5),c(corry2[i],corry2[i]),lty=3,lwd=2,col="gray80",type = "l")}
