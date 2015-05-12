@@ -7,7 +7,7 @@
     Fyx, Ival, SEmodel = NULL, DFF = NULL, dir,
     show = FALSE, variable = "Other", modelling = FALSE,
     yypos = NULL, yylab = NULL, width = 12, height = 10,
-    cex.lab = 1)
+    cex.lab = 1, TITLE = NULL)
 }
 \arguments{
   \item{x}{numeric vector.}
@@ -55,6 +55,8 @@
   \item{height}{the height of the device; default is 10.}
 
   \item{cex.lab}{the height of the device; default is 1.}
+
+  \item{TITLE}{character a string; default is NULL}
 }
 \value{
   character a string; default is 'finished!'.
@@ -174,7 +176,7 @@ yypos<-log(10^(0:3)) # edit to fecundity
 yylab<-10^(0:3) # edit to fecundity
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,dir=dir,variable="Other",modelling=TRUE) # Fecundity option 4
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",yypos=yypos,yylab=yylab) # Fecundity option 5
-non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",height=8,cex.lab=1.5) # Fecundity option 6
+non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",height=8,cex.lab=1.5,TITLE="Fecundity") # Fecundity option 6
 
 
 ############

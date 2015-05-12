@@ -103,7 +103,7 @@ yypos<-log(10^(0:3)) # edit to fecundity
 yylab<-10^(0:3) # edit to fecundity
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,dir=dir,variable="Other",modelling=TRUE) # Fecundity option 4
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",yypos=yypos,yylab=yylab) # Fecundity option 5
-non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",height=8,cex.lab=1.5) # Fecundity option 6
+non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",height=8,cex.lab=1.5,TITLE="Fecundity") # Fecundity option 6 - new function
 
 
 ############

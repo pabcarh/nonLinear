@@ -26,12 +26,13 @@
 #' @param width the width of the device; default is 12.
 #' @param height the height of the device; default is 10.
 #' @param cex.lab the height of the device; default is 1.
+#' @param TITLE character a string; default is NULL
 #' @return character a string; default is 'finished!'.
 #' @author Pablo Carhuapoma Ramos
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
-non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(paste("temperature ", degree~C)),Fyx,Ival,SEmodel=NULL,DFF=NULL,dir,show=FALSE,variable="Other",modelling=FALSE,yypos=NULL,yylab=NULL,width=12,height=10,cex.lab=1)
+non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(paste("temperature ", degree~C)),Fyx,Ival,SEmodel=NULL,DFF=NULL,dir,show=FALSE,variable="Other",modelling=FALSE,yypos=NULL,yylab=NULL,width=12,height=10,cex.lab=1,TITLE=NULL)
 {
   # modelling
   if(modelling==TRUE)
@@ -96,7 +97,7 @@ non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(paste(
     png(paste(dir,"/Plot_NonLinear.png",sep=""), width = width, height = height, units = 'in', res = 300) # para el grafico
   }
   par(mar=c(5, 5, 4, 4) + 0.1)
-  plot(x, Y, ylab=ylab, xlab=xlab, col="transparent", pch=19,axes=F,xlim=c(xl[1],xl[2]),ylim=c(yl[1],yl[2]),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5,cex.lab=cex.lab)
+  plot(x, Y, ylab=ylab, xlab=xlab, col="transparent", pch=19,axes=F,xlim=c(xl[1],xl[2]),ylim=c(yl[1],yl[2]),cex = 1.5,cex.lab=1.5, cex.axis=1.5,cex.sub=1.5,cex.lab=cex.lab,main=TITLE)
   axis(1, corrx2,lwd=2)
   axis(2, corry2,labels = round(yylab,2),las=2,lwd=2)
   for(i in 1:length(corry2)){lines(c(-1,max(corrx2)+5),c(corry2[i],corry2[i]),lty=3,lwd=2,col="gray80",type = "l")}
