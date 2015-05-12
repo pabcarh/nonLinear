@@ -6,7 +6,8 @@
     xlab = expression(paste("temperature ", degree ~ C)),
     Fyx, Ival, SEmodel = NULL, DFF = NULL, dir,
     show = FALSE, variable = "Other", modelling = FALSE,
-    yypos = NULL, yylab = NULL)
+    yypos = NULL, yylab = NULL, width = 12, height = 10,
+    cex.lab = 1)
 }
 \arguments{
   \item{x}{numeric vector.}
@@ -48,6 +49,12 @@
   \item{yypos}{numeric vector; default is NULL.}
 
   \item{yylab}{numeric vector; default is NULL.}
+
+  \item{width}{the width of the device; default is 12.}
+
+  \item{height}{the height of the device; default is 10.}
+
+  \item{cex.lab}{the height of the device; default is 1.}
 }
 \value{
   character a string; default is 'finished!'.
@@ -165,9 +172,9 @@ yl<-c(0,7) # edit to fecundity
 yyl<-0.5
 yypos<-log(10^(0:3)) # edit to fecundity
 yylab<-10^(0:3) # edit to fecundity
-non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,dir=dir,variable="Other",modelling=TRUE) # Fecundity option 4
-non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",yypos=yypos,yylab=yylab) # Fecundity option 5
-
+#non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,dir=dir,variable="Other",modelling=TRUE) # Fecundity option 4
+#non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",yypos=yypos,yylab=yylab) # Fecundity option 5
+non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",height=8,cex.lab=1.5) # Fecundity option 6
 
 
 ############
