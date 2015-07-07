@@ -19,7 +19,7 @@ y<-log(1/y) # only for development rate and senescense using transformation log(
 
 # Plot arguments
 yl<-c(0,0.3) # edit to DT
-xl<-c(0,30) # edit to DT
+xl<-c(0,35) # edit to DT
 yyl<-0.05 # edit to fecundity
 xxl<-5 # edit to DT
 ylab<-"development rate (1/day)" # edit
@@ -32,8 +32,8 @@ Fyx=as.formula(paste("y ~ log(1/(b*(x-Tb))^2)")) ## ecuacion log(1/Ecuacion)  Eg
 Ival=list(b=-0.0151 ,Tb=-2.8397) # Egg
 
 non_linear_DT(x,y,Error,yl,xl,yyl,xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              SEmodel=0.120078689,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.2,
-              Symbol="A",FeatSymbol=c(-0.22,-0.05,2.5),Text="Eggs",FeatText=c(0.1,0,2),Limit2=29.7) # development rate of "Egg"
+              SEmodel=0.120078689,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="A",FeatSymbol=c(-0.235,-0.08,2.5),Text="Eggs",FeatText=c(0.1,0,2),Limit2=c(29.7,29.7,29.7)) # development rate of "Egg"
 
 
 #########################################
@@ -59,8 +59,8 @@ Fyx=as.formula(paste("y ~ log(1/(rm*exp(-0.5*((x-Topt)/Troh)^2)))")) ## ecuacion
 Ival=list(rm=0.04763 ,Topt=28.58079, Troh=10.49975) # Larve
 
 non_linear_DT(x,y,Error,yl,xl,yyl,xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              SEmodel=0.061596277,dir=dir,variable="DT",height=8,cex.lab=1.8,
-              Symbol="B",FeatSymbol=c(-0.22,-0.05,2.5),Text="Larvas",FeatText=c(0.1,0,2)) # development rate of "Egg"
+              SEmodel=0.061596277,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="B",FeatSymbol=c(-0.235,-0.08,2.5),Text="Larvas",FeatText=c(0.1,0,2)) # development rate of "Egg"
 
 #########################################
 # Pupas
@@ -85,12 +85,12 @@ Fyx=as.formula(paste("y ~ log(1/(rm*exp(-0.5*((x-Topt)/Troh)^2)))")) ## ecuacion
 Ival=list(rm=0.09893 ,Topt=31.80226, Troh=11.10037) # Pupae
 
 non_linear_DT(x,y,Error,yl,xl,yyl,xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              SEmodel=0.10942986,dir=dir,variable="DT",height=8,cex.lab=1.8,
-              Symbol="C",FeatSymbol=c(-0.22,-0.05,2.5),Text="Pupas",FeatText=c(0.1,0,2)) # development rate of "Egg"
+              SEmodel=0.10942986,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="C",FeatSymbol=c(-0.235,-0.08,2.5),Text="Pupas",FeatText=c(0.1,0,2)) # development rate of "Egg"
 
 
 ############################################################################################################
-# SENESCENCE ###############################################################################################
+# SENESCENCE - Graficos ploteados en un mismo plano y escala ###############################################
 
 ##########################################
 # Female
@@ -105,7 +105,7 @@ yl<-c(0,0.3) # edit to DT
 xl<-c(0,35) # edit to DT
 yyl<-0.05 # edit to fecundity
 xxl<-5 # edit to DT
-ylab<-"senescence (1/day)" # edit
+ylab<-"senescence rate (1/median time)" # edit
 
 # Female
 Error<-c(0.00085,0.00590,0.00499,0.00822,0.00618,0.00430,0.00779,0.00197,0.00266,0.01194,0.00756,0.01698,0.01157,0.00211,0.00359)
@@ -114,8 +114,8 @@ Fyx=as.formula(paste("y ~ log(b1+b2*x)")) ##  Female
 Ival=list(b1=47.6594009280213, b2=-1.40813862718278) # Female
 
 non_linear_DT(x,y,Error,yl,xl,yyl,xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              SEmodel=0.23632013752966,DFF=28,dir=dir,variable="DT",height=8,cex.lab=1.8,
-              Symbol="A",FeatSymbol=c(-0.22,-0.05,2.5),Text="Female",FeatText=c(0.1,0,2),Limit2=c(31.5,32.4,30)) # development rate of "Egg"
+              SEmodel=0.23632013752966,DFF=28,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="A",FeatSymbol=c(-0.235,-0.08,2.5),Limit2=c(31.5,32.4,30),ADD="ADD_0") # development rate of "Egg"
 
 ##########################################
 # Male
@@ -130,7 +130,7 @@ yl<-c(0,0.3) # edit to DT
 xl<-c(0,35) # edit to DT
 yyl<-0.05 # edit to fecundity
 xxl<-5 # edit to DT
-ylab<-"senescence (1/day)" # edit
+ylab<-"senescence rate (1/median time)" # edit
 
 # Male
 Error<-c(0.00128,0.00615,0.00537,0.00772,0.00653,0.00492,0.00853,0.00182,0.00318,0.01254,0.00907,0.01556,0.02226,0.00225,0.00401)
@@ -138,9 +138,14 @@ Error<-c(0.00128,0.00615,0.00537,0.00772,0.00653,0.00492,0.00853,0.00182,0.00318
 Fyx=as.formula(paste("y ~ log(b1+b2*x)-0.0441")) ## ecuacion log(1/Ecuacion)  Male
 Ival=list(b1=47.6594009280213, b2=-1.40813862718278) # Male
 
+par(new=TRUE) # mantener las mismas escalas de los axis para transponer varias curvas!!!!
 non_linear_DT(x,y,Error,yl,xl,yyl,xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              SEmodel=0.23632013752966,DFF=28,dir=dir,variable="DT",height=8,cex.lab=1.8,
-              Symbol="B",FeatSymbol=c(-0.22,-0.05,2.5),Text="Male",FeatText=c(0.1,0,2),Limit2=c(31.5,32.4,30)) # development rate of "Egg"
+              SEmodel=0.23632013752966,DFF=28,dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,LTY=c(5,3),ColPoint="white",
+              Limit2=c(31.5,32.4,30),ADD="ADD_f") # development rate of "Egg"
+
+
+
+
 
 
 
@@ -158,18 +163,19 @@ yl<-c(0,1) # edit
 xl<-c(0,35) # edit
 yyl<-0.1 # edit
 xxl<-5 # edit
-ylab<-"mortality" # edit
+ylab<-"mortality rate" # edit
 
 # Egg
-Error<-c(0.002066,0.001718,0.015492,0.008748,0.005671,0.003409,0.005749,0.005040,0.007934,0.005018,0.005818,0.006279,0.004278,0.003583,0.004860,0.007963,0.009935,0.008210,0.012591,0.003760,0.008388,0.006030,0.008404)
+#Error<-c(0.002066,0.001718,0.015492,0.008748,0.005671,0.003409,0.005749,0.005040,0.007934,0.005018,0.005818,0.006279,0.004278,0.003583,0.004860,0.007963,0.009935,0.008210,0.012591,0.003760,0.008388,0.006030,0.008404)
+Error<-c(0.0199,0.0183,0.0482,0.0389,0.0326,0.0261,0.0334,0.0313,0.0308,0.0223,0.0319,0.0288,0.0203,0.0211,0.0278,0.0416,0.0537,0.0371,0.0586,0.0186,0.0316,0.0219,0.0269)
 
 # non linear equation
 Fyx=as.formula(paste("y ~ exp(log(rmin)+cc*((Topt-x)^2))")) ## ecuacion log(1/Ecuacion)  Egg
 Ival=list(rmin=0.131404, cc=0.0070, Topt=17.093862) # Egg
 
 non_linear_DT(x,y,Error=Error,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              dir=dir,variable="Other",,height=8,cex.lab=1.8,
-              Symbol="A",FeatSymbol=c(-0.22,-0.05,2.5),Text="Eggs",FeatText=c(0.05,0,2),Limit1=c(1,1,1),Limit2=c(33,33,33))
+              dir=dir,variable="Other",,height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="A",FeatSymbol=c(-0.235,-0.08,2.5),Text="Eggs",FeatText=c(0.05,0,2),Limit1=c(1,1,1),Limit2=c(33,33,33))
 
 #########################################
 # Larve
@@ -182,7 +188,7 @@ yl<-c(0,1) # edit
 xl<-c(0,35) # edit
 yyl<-0.1 # edit
 xxl<-5 # edit
-ylab<-"mortality" # edit
+ylab<-"mortality rate" # edit
 
 # Larve
 Error<-c(0.01889,0.01901,0.01311,0.02111,0.02004,0.01722,0.02267,0.02098,0.01911,0.02523,0.02085,0.02645,0.02238,0.01342,0.01481,0.00710,0.00955,0.00943,0.01096,0.01583,0.01248,0.01778)
@@ -191,8 +197,8 @@ Fyx=as.formula(paste("y ~ 1-1/(1+exp(log(rmin)+cc*((1/(sqrt(Topt))-1/(sqrt(x)))^
 Ival=list(rmin=0.380422018178331, cc=383.273821136479, Topt=14.6033534594175) # Larve
 
 non_linear_DT(x,y,Error=Error,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              dir=dir,variable="Other",,height=8,cex.lab=1.8,
-              Symbol="B",FeatSymbol=c(-0.22,-0.05,2.5),Text="Larvas",FeatText=c(0.05,0,2),Limit1=c(0,9,0),Limit2=c(35,28,35))
+              dir=dir,variable="Other",,height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="B",FeatSymbol=c(-0.235,-0.08,2.5),Text="Larvas",FeatText=c(0.05,0,2),Limit1=c(0,9,0),Limit2=c(35,28,35))
 
 #########################################
 # Pupae
@@ -205,7 +211,7 @@ yl<-c(0,1) # edit
 xl<-c(0,35) # edit
 yyl<-0.1 # edit
 xxl<-5 # edit
-ylab<-"mortality" # edit
+ylab<-"mortality rate" # edit
 
 # Pupae
 Error<-c(0.01327,0.00712,0.02506,0.02200,0.02538,0.01127,0.00835,0.00855,0.00762,0.01489,0.02376,0.02043)
@@ -216,8 +222,8 @@ Fyx=as.formula(paste("y ~ exp(log(rmin)+cc*((sqrt(Topt)-sqrt(x))^2))")) ## ecuac
 Ival=list(rmin=0.18505025674978 ,cc=0.616669022415545,Topt=16.2539949567149) # Pupae
 
 non_linear_DT(x,y,Error=Error,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,
-              dir=dir,variable="Other",,height=8,cex.lab=1.8,
-              Symbol="C",FeatSymbol=c(-0.22,-0.05,2.5),Text="Pupas",FeatText=c(0.05,0,2),Limit1=c(6,6.5,6),Limit2=c(32,31,32))
+              dir=dir,variable="Other",,height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="C",FeatSymbol=c(-0.235,-0.08,2.5),Text="Pupas",FeatText=c(0.05,0,2),Limit1=c(6,6.5,6),Limit2=c(32,31,32))
 
 
 ############################################################################################################
@@ -234,7 +240,7 @@ yl<-c(0,0.3) # edit to DT
 xl<-c(0,35) # edit to DT
 yyl<-0.05 # edit to fecundity
 xxl<-5 # edit to DT
-ylab<-"median oviposition rate" # edit
+ylab<-"1/median oviposition time (days)" # edit
 
 # Oviposition time
 Error<-c(0.00267,0.00727,0.00404,0.00693,0.02094,0.00300,0.00299,0.00439,0.00368,0.00452,0.00593,0.00483,0.00646)
@@ -244,8 +250,8 @@ Fyx=as.formula(paste("y ~ log(b1+b2*x)")) ##  Oviposition time
 Ival=list(b1=17.7518847738705, b2=-0.409568939949337) # Oviposition time
 
 non_linear_DT(x,y,Error=Error,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.23632013752966,DFF=28,
-              dir=dir,variable="DT",height=8,cex.lab=1.8,
-              Symbol="A",FeatSymbol=c(-0.22,-0.05,2.5),Text="Female",FeatText=c(0.05,0,2),Limit2=c(34,34,30))
+              dir=dir,variable="DT",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="B",FeatSymbol=c(-0.235,-0.08,2.5),Limit2=c(34,34,30))
 
 ############################################################################################################
 # Fecundity ################################################################################################
@@ -262,7 +268,7 @@ xxl<-5
 yyl<-0.5
 yypos<-log(10^(0:3)) # edit to fecundity
 yylab<-10^(0:3) # edit to fecundity
-ylab<-"fecundity / female"
+ylab<-"fecundity/female"
 
 # non linear equation
 Fyx=as.formula(paste("y ~ rmax+cc*(Top-x)^2")) ## ecuacion log(Ecuacion) Fecundity
@@ -271,5 +277,6 @@ Ival=list(rmax=4.99887937569638, cc=-0.0166398011904257, Top=17.2944263203708) #
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,dir=dir,variable="Other",modelling=TRUE) # Fecundity option 4
 #non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,dir=dir,variable="Other",yypos=yypos,yylab=yylab) # Fecundity option 5
 non_linear_DT(x,y,yl=yl,xl=xl,yyl=yyl,xxl=xxl,ylab=ylab,Fyx=Fyx,Ival=Ival,SEmodel=0.534779270479086,
-              dir=dir,variable="Other",height=8,cex.lab=1.5,
-              Symbol="B",FeatSymbol=c(-0.22,-0.05,2.5),Text="Female",FeatText=c(0.05,0,2),Limit1=c(1,1,2.5),Limit2=c(34,34,32))
+              dir=dir,variable="Other",height=8,cex.lab=1.8,Cex.Axis=1.8,
+              Symbol="C",FeatSymbol=c(-0.235,-0.08,2.5),Limit1=c(1,1,2.5),Limit2=c(34,34,32))
+
