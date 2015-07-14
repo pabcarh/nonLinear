@@ -8,7 +8,9 @@
     show = FALSE, variable = "Other", modelling = FALSE,
     yypos = NULL, yylab = NULL, width = 12, height = 10,
     cex.lab = 1, Cex.Axis = 1, LTY = c(1, 3), PCH = 19,
-    ColPoint = "gray60", TITLE = NULL, Symbol = NULL,
+    ColPoint = "gray60", ColPointBorder = "gray10",
+    CexPoint = 3, LwdPoint = 3, TypePoint = "p",
+    CURVE = TRUE, GRID = TRUE, TITLE = NULL, Symbol = NULL,
     FeatSymbol = NULL, Text = NULL, FeatText = NULL,
     Limit1 = NULL, Limit2 = NULL, ADD = "No")
 }
