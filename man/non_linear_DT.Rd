@@ -10,9 +10,11 @@
     cex.lab = 1, Cex.Axis = 1, LTY = c(1, 3), PCH = 19,
     ColPoint = "gray60", ColPointBorder = "gray10",
     CexPoint = 3, LwdPoint = 3, TypePoint = "p",
-    CURVE = TRUE, GRID = TRUE, TITLE = NULL, Symbol = NULL,
-    FeatSymbol = NULL, Text = NULL, FeatText = NULL,
-    Limit1 = NULL, Limit2 = NULL, ADD = "No")
+    CURVE = TRUE, LwdCurve = c(4, 3, 3), GRID = TRUE,
+    BoxCol = "black", MARGEN = c(6.1, 8.1, 2.1, 3.1),
+    TITLE = NULL, Symbol = NULL, FeatSymbol = NULL,
+    Text = NULL, FeatText = NULL, Limit1 = NULL,
+    Limit2 = NULL, ADD = "No")
 }
 \arguments{
   \item{x}{numeric vector.}

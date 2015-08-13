@@ -42,7 +42,7 @@
 #' @family example
 #' @example inst/examples/ex_non_linear_DT.R
 #' @export
-non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(bold(paste("temperature (", degree, "C)"))),Fyx,Ival,SEmodel=NULL,DFF=NULL,dir,show=FALSE,variable="Other",modelling=FALSE,yypos=NULL,yylab=NULL,width=12,height=10,cex.lab=1,Cex.Axis=1,LTY=c(1,3),PCH=19,ColPoint="gray60",ColPointBorder="gray10",CexPoint=3,LwdPoint=3,TypePoint="p",CURVE=TRUE,GRID=TRUE,TITLE=NULL,Symbol=NULL,FeatSymbol=NULL,Text=NULL,FeatText=NULL,Limit1=NULL,Limit2=NULL,ADD="No")
+non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(bold(paste("temperature (", degree, "C)"))),Fyx,Ival,SEmodel=NULL,DFF=NULL,dir,show=FALSE,variable="Other",modelling=FALSE,yypos=NULL,yylab=NULL,width=12,height=10,cex.lab=1,Cex.Axis=1,LTY=c(1,3),PCH=19,ColPoint="gray60",ColPointBorder="gray10",CexPoint=3,LwdPoint=3,TypePoint="p",CURVE=TRUE,LwdCurve=c(4,3,3),GRID=TRUE,BoxCol="black",MARGEN=c(6.1, 8.1, 2.1, 3.1),TITLE=NULL,Symbol=NULL,FeatSymbol=NULL,Text=NULL,FeatText=NULL,Limit1=NULL,Limit2=NULL,ADD="No")
 {
   # modelling
   if(modelling==TRUE)
@@ -125,7 +125,7 @@ non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(bold(p
   {
     png(paste(dir,"/Plot_NonLinear.png",sep=""), width = width, height = height, units = 'in', res = 300) # para el grafico
   }
-  par(mar=c(6.1, 8.1, 2.1, 3.1),xpd=TRUE,font.lab=2)
+  par(mar=MARGEN,xpd=TRUE,font.lab=2)
   #plot(x, Y, ylab=ylab, xlab=xlab, col="transparent", pch=19,axes=F,xlim=c(xl[1],xl[2]),ylim=c(yl[1],yl[2]),cex = 1.5, cex.axis=Cex.Axis,cex.sub=1.5,cex.lab=cex.lab,main=TITLE,font.lab=2)
   plot(x, Y, ylab="", xlab="", col="transparent", pch=PCH,axes=F,xlim=c(xl[1],xl[2]),ylim=c(yl[1],yl[2]),cex = 1.5, cex.axis=Cex.Axis,cex.sub=1.5,cex.lab=cex.lab,main=TITLE,font.lab=2)
   axis(1, corrx2,lwd=2,cex.axis = Cex.Axis)
@@ -143,20 +143,20 @@ non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(bold(p
   }  
   if(CURVE==TRUE)
   {
-    curve(ff,add=TRUE,col="black",lwd=4,lty=LTY[1])
-    curve(ffup,add=TRUE,col="gray30",lwd=3,lty=LTY[2])
-    curve(fflo,add=TRUE,col="gray30",lwd=3,lty=LTY[2])
+    curve(ff,add=TRUE,col="black",lwd=LwdCurve[1],lty=LTY[1])
+    curve(ffup,add=TRUE,col="gray30",lwd=LwdCurve[2],lty=LTY[2])
+    curve(fflo,add=TRUE,col="gray30",lwd=LwdCurve[3],lty=LTY[2])
     if(!is.null(Limit1))
     {
-      curve(ff,to = Limit1[1],add=TRUE,col="white",lwd=4.9)
-      curve(ffup,to = Limit1[2],add=TRUE,col="white",lwd=3.9)
-      curve(fflo,to = Limit1[3],add=TRUE,col="white",lwd=3.9)
+      curve(ff,to = Limit1[1],add=TRUE,col="white",lwd=LwdCurve[1]+LwdCurve[1]*0.1836735)
+      curve(ffup,to = Limit1[2],add=TRUE,col="white",lwd=LwdCurve[2]+LwdCurve[2]*0.1836735)
+      curve(fflo,to = Limit1[3],add=TRUE,col="white",lwd=LwdCurve[3]+LwdCurve[3]*0.1836735)
     }
     if(!is.null(Limit2))
     {
-      curve(ff,from = Limit2[1],add=TRUE,col="white",lwd=4.9)
-      curve(ffup,from = Limit2[2],add=TRUE,col="white",lwd=3.9)
-      curve(fflo,from = Limit2[3],add=TRUE,col="white",lwd=3.9)
+      curve(ff,from = Limit2[1],add=TRUE,col="white",lwd=LwdCurve[1]+LwdCurve[1]*0.1836735)
+      curve(ffup,from = Limit2[2],add=TRUE,col="white",lwd=LwdCurve[2]+LwdCurve[2]*0.1836735)
+      curve(fflo,from = Limit2[3],add=TRUE,col="white",lwd=LwdCurve[3]+LwdCurve[3]*0.1836735)
     }  
   }
   
@@ -168,7 +168,7 @@ non_linear_DT<-function(x,y,Error=NULL,yl,xl,yyl,xxl,ylab,xlab=expression(bold(p
     plotCI(x, F, ui=U, li=L, add=TRUE, col=ColPoint,scol="black", pch=PCH, cex=CexPoint,lwd=LwdPoint)
   }else{points(x, Y,col=ColPoint,pch=PCH,lwd=LwdPoint,cex=CexPoint,type=TypePoint)}
   points(x, Y,col=ColPointBorder,lwd=LwdPoint,cex=CexPoint)
-  box()
+  box(col=BoxCol)
   if(!is.null(Text))
   {
     legend("topleft", inset=c(FeatText[1],FeatText[2]), legend=Text, cex=FeatText[3], bty="n")
